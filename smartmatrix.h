@@ -11,9 +11,10 @@
 const int WELCOME = 1;
 const int APPLET = 2;
 const int NONE = 0;
-const int MATRIX_WIDTH = 64;
-const int MATRIX_HEIGHT = 64;
-const int CHAIN_LENGTH = 64;
+
+#define MATRIX_WIDTH 64
+#define MATRIX_HEIGHT 64
+#define CHAIN_LENGTH 1
 
 #ifdef TIDBYT
 #pragma message "Compiling for Tidbyt pins"
