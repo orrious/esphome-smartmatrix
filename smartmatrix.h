@@ -11,6 +11,9 @@
 const int WELCOME = 1;
 const int APPLET = 2;
 const int NONE = 0;
+const int MATRIX_WIDTH = 64;
+const int MATRIX_HEIGHT = 64;
+const int CHAIN_LENGTH = 64;
 
 #ifdef TIDBYT
 #pragma message "Compiling for Tidbyt pins"
@@ -28,7 +31,9 @@ HUB75_I2S_CFG matrix_config(MATRIX_WIDTH, MATRIX_HEIGHT, CHAIN_LENGTH, _pins);
 MatrixPanel_I2S_DMA dma_display = MatrixPanel_I2S_DMA(matrix_config);
 #else
 #pragma message "Compiling with default pins"
-MatrixPanel_I2S_DMA dma_display = MatrixPanel_I2S_DMA();
+HUB75_I2S_CFG::i2s_pins _pins = { 25, 26, 27, 14, 12, 13, 23, 19, 5, 17, 18, 4, 15, 16 };
+HUB75_I2S_CFG matrix_config(MATRIX_WIDTH, MATRIX_HEIGHT, CHAIN_LENGTH, _pins);
+MatrixPanel_I2S_DMA dma_display = MatrixPanel_I2S_DMA(matrix_config);
 #endif
 
 char applet_topic[22];
